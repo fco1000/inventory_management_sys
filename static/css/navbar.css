@@ -1,0 +1,44 @@
+
+.bar {
+    background-color: rgb(245, 97, 240);
+    width: 100%;
+    height: 40px;
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+.bar li {
+    height: 100%;
+    width: 100px;
+    border-right: 1px solid rgb(216, 69, 235);
+}
+
+.bar li a {
+    color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.bar li a:hover {
+    background-color: rgb(221, 69, 235);
+}
+
+.bar li a.active {
+    background-color: rgb(143, 16, 165);
+    color: white;
+}
+
+.dropdown {
+  background-color: rgb(235, 97, 245);
+  padding: 0;
+  list-style: none;
+  display: none;
+}
+
+.bar li.has-dropdown:hover .dropdown {
+  display: block;
+}

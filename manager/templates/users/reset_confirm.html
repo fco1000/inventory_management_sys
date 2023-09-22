@@ -1,0 +1,13 @@
+{% load crispy_forms_tags %}
+{% extends 'users/base.html' %}
+{% block user_head %}<h3>Enter new password</h3>{% endblock user_head %}
+{% block user %}
+<p>Please enter your new password twice so we can verify you typed it in correctly.</p>
+<form method="post">
+
+	{% csrf_token %}
+	{{form|crispy}}
+	<input type="Submit" name="Update Password">
+
+</form>
+{% endblock user %}

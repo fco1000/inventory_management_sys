@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<section class="row">
+    <div class="col-md-3 col-sm-6 ">
+      <div class="card m-2 p-3 shadow rounded">
+         <h5 class="text-center"><strong>Suppliers:  {{suppliers}}</strong></h5>
+      </div>        
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="card m-2 p-3 shadow rounded">
+         <h5 class="text-center"><strong>Sales:  {{sales}}</strong></h5> 
+      </div>
+       
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="card m-2 p-3 shadow rounded">
+         <h5 class="text-center"><strong>Purchases:  {{purchases}}</strong></h5> 
+      </div>
+       
+    </div>
+    <a class="col-md-3 col-sm-6 cardy" style="text-decoration: none;" href="{% url 'customer' %}">
+      <div class="card m-2 p-3 shadow rounded ">
+         <h5 class="text-center"><strong class="link">Customers</strong></h5> 
+      </div>
+    </a>
+    
+</section>
+{% endblock content %}

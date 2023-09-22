@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Purchases{% endblock title %}
+
+{% block content %}{% block search %}
+    <form action="" method="get">
+      {{myPurchaseFilter.form}}
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+    {% endblock search %}
+    <div class="justify-content-end">
+        <div class="pb-3">
+        <button onclick="dialog()" class="btn btn-primary text-light">
+            <span style="font-size: 25px;">&plus;</span> Add
+        </button>
+        <dialog id="myDialog" >
+            <div class="d-flex justify-content-between">
+            <div class="modal-form">
+            <form action="" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    <div class="d-flex">
+                        <legend>Add a product</legend>
+                        <div class="ms-auto">
+                            <span id="closeDiag"style="font-size: 25px;">&times;</span>
+                        </div>
+                    </div> 
+                    {{ form|crispy }}
+                    <input type="submit" class="btn btn-success align-items-center" value="Submit">
+                </fieldset>
+            </form>
+            </div>
+            <div class="" style="float: right;">
+                <h5>Products</h5><br>
+                <small>Note: Only input the id into the field</small>
+                <ul>
+                    {% for product in products %}
+                    <li>{{product.ProductID}}- {{product.ProductName}}- {{product.UnitPrice}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        </dialog>
+    </div>
+    
+    </div>
+    <table class="table">
+        <thead>
+            <tr class="table-responsive-lg">
+                <td scope="row">TransactionID</td>
+                <td scope="row">ProductID</td>
+                <td scope="row">Transaction Date</td>
+                <td scope="row">Quantity</td>
+                <td scope="row">Transaction Amount</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for purchase in purchaseItems %}
+            
+                <tr class="table-responsive-lg   ">
+                    
+                    <td>{{purchase.TransactionID}}</td>
+                    <td>{{purchase.ProductID}}</td>
+                    <td>{{purchase.TransactionDate}}</td>
+                    <td>{{purchase.Quantity}}</td>
+                    <td>{{purchase.TransactionAmount}}</td>
+                    <td><a href="{% url 'purchaseUpdate' purchase.TransactionID %}">
+                        <span>
+                            <i class="fa fa-pen"></i>
+                        </span>
+                    </a></td>
+                
+                </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
+
+{% comment %} 
+TransactionID
+ProductID
+TransactionType
+TransactionDate
+Quantity
+TransactionAmount
+{% endcomment %}

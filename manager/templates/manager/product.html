@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Products{% endblock title %}
+{% block content %}
+    <div class="justify-content-end">
+        <div class="pb-3">
+        <button onclick="dialog()" class="btn btn-primary text-light">
+            <span style="font-size: 25px;">&plus;</span> Add
+        </button>
+        <dialog id="myDialog">
+            <form action="" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    <div class="d-flex">
+                        <legend>Add a product</legend>
+                        <div class="ms-auto">
+                            <span id="closeDiag"style="font-size: 25px;">&times;</span>
+                        </div>
+                    </div> 
+                    {{ form|crispy }}
+                    <input type="submit" class="btn btn-success align-items-center" value="Submit">
+                </fieldset>
+            </form>
+        </dialog>
+    </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr class="table-responsive-lg">
+                <td scope="row">Product ID</td>
+                <td scope="row">Product Name</td>
+                <td scope="row">Description</td>
+                <td scope="row">Category ID</td>
+                <td scope="row">Supplier ID</td>
+                <td scope="row">Unit Price</td>
+                <td scope="row">Quantity In Stock</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <a href="{% url 'productUpdate' product.ProductID %}">
+            <tr>
+                <td>{{product.ProductID}}</td>
+                <td>{{product.ProductName}}</td>
+                <td>{{product.Description}}</td>
+                <td>{{product.CategoryID}}</td>
+                <td>{{product.SupplierID}}</td>
+                <td>{{product.UnitPrice}}</td>
+                <td>{{product.QuantityInStock}}</td>
+            </tr>
+            </a>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
+
+{% comment %} 
+ProductID
+ProductName
+Description
+CategoryID
+SupplierID
+UnitPrice
+QuantityInStock
+{% endcomment %}

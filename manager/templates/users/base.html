@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container center-object">
+    <div class="card border-primary mb-3" >
+        <div class="card-header">{% block user_head %}Header{% endblock user_head %}</div>
+        <div class="card-body">
+            {% block user %}
+            {% endblock user %} 
+        </div>
+      </div>
+</div>
+{% endblock content %}

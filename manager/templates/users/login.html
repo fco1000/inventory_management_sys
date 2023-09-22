@@ -1,0 +1,28 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block user_head %}Sign in{% endblock user_head %}
+{% block user %}
+<form action="" method="post">
+    {% csrf_token %}
+    <center><img src="{% static 'img/logo.png' %}" width="200px" alt="Logo"></center>
+    {{form|crispy}}
+    <input type="submit" value="Sign In" class="btn btn-success">
+</form>
+<div class="container">
+    <center>
+        <p>
+        If you don't have an account, 
+        <a href="{% url 'register' %}" style="text-decoration: none; color: red;">
+            Sign up
+        </a>
+        <br>
+        Have you forgotten your password, 
+        <a href="{% url 'password_reset' %}" style="text-decoration: none; color: blue;">
+            Please Change
+        </a>
+        <br>
+    </p>
+    </center>
+</div>
+{% endblock user %}

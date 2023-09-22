@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Customers{% endblock title %}
+{% block content %}
+{% block search %}
+    <form action="" method="get">
+      {{mycustomerFilter.form}}
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+    {% endblock search %}
+    <br>
+    <table class="table">
+        <thead>
+            <tr class="table-responsive-lg bg-primary text-light">
+                <td scope="row">Customer ID</td>
+                <td scope="row">Customer Name</td>
+                <td scope="row">Address</td>
+                <td scope="row">Phone No.</td>
+                <td scope="row">Transaction ID</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customerItems %}
+            <a href="{% url 'customerUpdate' customer.id %}">
+            <tr>
+                <td>{{customer.IDNo}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.physical_address}}</td>
+                <td>{{customer.mobile}}</td>
+                <td>{{customer.TransactionID}}</td>
+            </tr>
+            </a>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

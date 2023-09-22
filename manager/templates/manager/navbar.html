@@ -1,0 +1,30 @@
+<div class="container">
+  <nav>
+  <ul class="bar">
+    <li><a href="{% url 'home' %}"class="active" aria-current="page">Home</a></li>
+    
+    <li><a href="{% url 'category' %}" >Categories</a></li>
+    <li><a href="{% url 'product' %}" >Products</a></li>
+    <li class="has-dropdown">
+      <a href="#">Transactions</a>
+      <ul class="dropdown">
+        <li><a href="{% url 'purchase' %}">Purchases</a></li>
+        <li><a href="{% url 'sale' %}">Sales</a></li>
+      </ul>
+    </li>
+    <li><a href="{% url 'suppliers' %}">Suppliers</a></li>
+    <li><a href="{% url 'customer' %}">Customers</a></li>
+    {% if search %}
+    <div class="inline">
+        {% block search %}{% endblock search %}
+    </div>
+    {% endif %}
+    <div class="ms-auto">
+    {% if user.is_authenticated %}  
+    <li ><a href="{% url 'user_update' %}">{{user.username}}</a></li>
+    <li ><a href="{% url 'logout' %}">Logout</a></li>
+    {% endif %}
+  </div>
+  </ul>
+  </nav>
+</div>
